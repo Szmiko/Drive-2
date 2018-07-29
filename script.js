@@ -63,21 +63,36 @@ var taxi = {
 	},
 	drive: function() {
 		if (this.started) {
-			alert(this.make + " " + this.model + " robi: brum wrr!");
+			if (this.fuel > 0) {
+				alert(this.make + " " + this.model + " robi: brum wrr!");
+				this.fuel--;
+			} else {
+				alert("Brak paliwa!");
+			}
 		} else {
 			aler("Najpierw musisz włączyć silnik.");
+			this.stop();
 		}
+	},
+	fuel: 0,
+	addFuel: function(amount) {
+		this.fuel = this.fuel + amount;
 	}
 };
 
-cadi.start();
+/*cadi.start();
 cadi.drive();
 cadi.stop();
 
 chevy.start();
 chevy.drive();
 chevy.stop();
+*/
 
 taxi.start();
+taxi.drive();
+taxi.addFuel(2);
+taxi.start();
+taxi.drive();
 taxi.drive();
 taxi.stop();
